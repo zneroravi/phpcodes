@@ -1,0 +1,119 @@
+SQL
+
+###########################################  Database Query ############################################
+# create DATABASE
+create DATABASE classphp; # classphp is a database name
+
+show databases; #check all database
+
+USE classphp; #Access database classphp
+
+###########################################  Table Query ############################################
+
+CREATE TABLE table_name (id INT(10), name VARCHAR(20), age INT(3), email VARCHAR(30));
+
+# SQL Constraint
+#NOT NULL:- The NOT NULL constraint enforces a column to NOT accept NULL values.
+
+CREATE TABLE table_name (id INT(10) NOT NULL, name VARCHAR(20) NOT NULL, age INT(3) NOT NULL, email VARCHAR(30) NOT NULL);
+
+#UNIQUE:- The UNIQUE constraint ensures that all values in a column are different. 
+#Both the UNIQUE and PRIMARY KEY constraints provide a guarantee for uniqueness for a column or set of columns.
+#A PRIMARY KEY constraint automatically has a UNIQUE constraint.
+
+CREATE TABLE table_name (id INT(10) NOT NULL UNIQUE, name VARCHAR(20) NOT NULL, age INT(3) NOT NULL, email VARCHAR(30) NOT NULL UNIQUE);
+#I used UNIQUE constraint for ID, Email which will be unique in that query.
+
+
+
+# The PRIMARY KEY constraint uniquely identifies each record in a table.
+# Primary keys must contain UNIQUE values, and cannot contain NULL values.
+# A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).
+CREATE TABLE table_name (id INT(10) PRIMARY KEY, name VARCHAR(20) NOT NULL, age INT(3) NOT NULL, email VARCHAR(30) NOT NULL); #method 1
+CREATE TABLE table_name (id INT(10), name VARCHAR(20) NOT NULL, age INT(3) NOT NULL, email VARCHAR(30) NOT NULL, PRIMARY KEY (id)); #method 2
+#In method 2 i defined PRIMARY KEY in the end.
+
+
+#ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+
+# Add a column in a table.
+ALTER TABLE user ADD gender varchar(10);
+
+#delete a column in a table,
+ALTER TABLE table_name DROP COLUMN column_name;
+ALTER TABLE user DROP COLUMN gender;
+
+#Change the data type of a column in a table
+ALTER TABLE table_name MODIFY COLUMN column_name datatype;
+###########################################  Insert Query ############################################
+
+INSERT INTO table_name VALUES (value1, value2, value3); #Basic SQl syntax.
+
+
+INSERT INTO user (id, name, age, email) VALUES (11, 'ravi', 25, 'ravi@gmail.com');
+INSERT INTO user VALUES (11, 'ravi', 25, 'ravi@gmail.com');
+
+###########################################  Select Query ############################################
+
+
+# COUNT() function returns the number of rows that matches a specified criteria.
+SELECT COUNT(id) FROM user; # Return count of id.
+
+# AVG() function returns the average value of a numeric column.
+SELECT AVG(age) FROM user;
+
+# SUM() function returns the total sum of a numeric column.
+SELECT SUM(age) FROM user;
+
+# MIN() function returns the smallest value of the selected column.
+SELECT MIN(age) FROM user;
+
+# MAX() function returns the largest value of the selected column.
+SELECT MAX(age) FROM user;
+
+
+# Select Query
+SELECT * FROM user; #select all data from user.
+
+SELECT id, name FROM user; #select id and name.
+SELECT id, name,age FROM user; #select id,name and age.
+
+# WHERE Clause is used to filter records and extract only those records that fulfill a specified condition.
+SELECT * FROM user WHERE id='11';
+
+# AND operator displays a record if all the conditions separated by AND are TRUE.
+SELECT * FROM user WHERE id='11' AND name='ravi';
+
+# OR operator displays a record if any of the conditions separated by OR is TRUE.
+SELECT * FROM user WHERE age='20' OR age='24';
+
+# NOT operator displays a record if the condition is NOT TRUE.
+SELECT * FROM user WHERE NOT age='24';
+
+
+###########################################  Operators with WHERE Clause ##################################
+
+#Operators can be used in the WHERE clause
+=	Equal	
+>	Greater than	
+<	Less than	
+>=	Greater than or equal	
+<=	Less than or equal	
+<>	Not equal. Note: In some versions of SQL this operator may be written as !=	
+BETWEEN	Between a certain range	
+LIKE	Search for a pattern	
+IN	To specify multiple possible values for a column
+
+###########################################  Update Query ############################################
+
+UPDATE user SET Name = 'ravi' WHERE id = 11; 
+
+UPDATE user SET Name = 'ravi', age= '25' WHERE id = 11;
+
+
+###########################################  Delete Query ############################################
+
+DELETE FROM user WHERE id='11'; 
+
+###########################################  xxxxxxxxxxxx ############################################
+
