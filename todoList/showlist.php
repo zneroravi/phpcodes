@@ -35,6 +35,46 @@
 			    }
 			});
 		});
+
+		$('#addnew').on('click', function (event) {
+			var task = prompt('Enter the task you want to create :');
+			$.ajax({
+			    url: "add.php",
+			    type: "get", //send it through get method
+			    data: { 
+			        task: task
+			    },
+			    success: function(response) {
+			        alert('status updated');
+			        console.log(response);
+			        window.location.reload();
+			    },
+			    error: function(xhr) {
+			        alert('some error occured');
+			        console.log(xhr);
+			    }
+			});
+		})
+
+		$('.delete').on('click', function (event) {
+			var id = $(this).attr('id');
+			$.ajax({
+			    url: "delete.php",
+			    type: "get", //send it through get method
+			    data: { 
+			        id: id
+			    },
+			    success: function(response) {
+			        alert('status updated');
+			        console.log(response);
+			        window.location.reload();
+			    },
+			    error: function(xhr) {
+			        alert('some error occured');
+			        console.log(xhr);
+			    }
+			});
+		});
 	});
 </script>
 
@@ -51,6 +91,10 @@ foreach ($todo as $key => $value) {
 	echo ($value['status'] == 1)?" checked":"";
 	echo " >";
 	echo $value['task'];
+	echo "<span class='delete' id='$key'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Delete </span>";
 	echo "<br/>";
 }
 ?>
+
+<br/>
+<input type="button" value="Add New" id="addnew">
