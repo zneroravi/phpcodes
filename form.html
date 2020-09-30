@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>A Title</title>
 </head>
 <body>
 
@@ -42,14 +42,14 @@
 	// });
 
 	db.collection("users").get().then((querySnapshot) => {
-    	querySnapshot.forEach((doc) => {
+    	    querySnapshot.forEach((doc) => {
         	var data = doc.data();
         	console.log(data.name);
         	console.log(data.email);
         	console.log(data.massage);
         	document.write(data.name[0]);
         	document.write(data.massage);
-    	});
+    	    });
 	});
 </script>
 </body>
