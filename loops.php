@@ -46,19 +46,20 @@
 	*/
 
 	# Foreach Loop - For arrays
-	/*
-	$people = array('pranav', 'ravi', 'priyanka');
 
-	foreach($people as $person){
-		echo $person;
-		echo '<br>';
-	}
-	*/
+	
+
 
 	$people = array('pranav' => 'pranav@gmail.com', 'ravi' => 'ravi@gmail.com', 'priyanka' => 'priyanka@gmail.com');
 
 	foreach($people as $person => $email){
 		echo $person.': '.$email;
+		echo '<br>';
+	}
+$people = array('pranav', 'ravi', 'priyanka');
+
+	foreach($people as $person){
+		echo $person;
 		echo '<br>';
 	}
 ?>
