@@ -1,29 +1,36 @@
 <?php 
+if (isset($_POST['submit']))
+{
 
-$location = "localhost";
-$user ="root";
-$pass = "";
-$db = "a123";
+$rcno=$_POST['rcno'];
+$ino=$_POST['ino'];
+$icompany=$_POST['icompany'];
+$icity=$_POST['icity'];
+$idate=$_POST['idate'];
 
- $conn = new mysqli($location, $user, $pass, $db);
 
- if ($conn->connect_error) {
- 	die($conn->connect_error);
- 	
- } else
- echo "localhost connected";
- echo "<br>";
 
- $sql= ("Select id, user FROM user where `user` = '$_POST[username]' AND `pass` = '$_POST[password]'");
- 
-      $res = $conn->query($sql);
 
-	if ($res->num_rows >0){
-		while ($row = $res->fetch_assoc()) {
-			echo "Welcome $row[user] ";
-			echo "Click here to <a href='login.html'> log out </a>";
-		}
-	} else {
-		echo "Sorry the username or the password is incorrect ";
-		echo "Please try again on the following link <a href='login.html'> Try Again </a>";
-	}
+
+
+$servername = "localhost";
+$username   = "root";
+$password   = "";
+$dbname     = "rtosystem";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) 
+{
+	die("connection failed: ".$conn->connect_error);
+}
+ echo "connect successfully";
+
+$sql="UPDATE insurance SET ino='$ino',icompany='$icompany',icity='$icity',idate='$idate' WHERE rcno='$rcno'";
+if($conn->query($sql)===TRUE)
+{
+	echo"data Updated";
+	header('Refresh: 2; URL=insurance.php'); 
+}
+}
+?>
