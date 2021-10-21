@@ -62,4 +62,10 @@ $people = array('pranav', 'ravi', 'priyanka');
 		echo $person;
 		echo '<br>';
 	}
-?>
+
+
+	for($i = 5;$i <= 10;$i++){
+		echo 'Number '.$i;
+		echo '<br>';
+	}
+	?>
